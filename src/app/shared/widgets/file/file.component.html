@@ -1,0 +1,55 @@
+File name: "{{ file.name }}", File type: "{{ file.type }}"
+
+<div *ngIf="isImage;">
+  <div *ngIf="src$ | async as src"><img class="image-thumbnail" [src]="src"></div>
+</div>
+
+<div *ngIf="isTable;">
+  <div *ngIf="formattedSrc$ | async as src">
+    <table mat-table [dataSource]="src">
+      <ng-container matColumnDef="ProjectName">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.projectName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="ProjectCode">
+        <th mat-header-cell *matHeaderCellDef>Code</th>
+        <td mat-cell *matCellDef="let element">{{element.projectCode}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Monday">
+        <th mat-header-cell *matHeaderCellDef>Monday</th>
+        <td mat-cell *matCellDef="let element">{{ element.monday | number: '1.0-1' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Tuesday">
+        <th mat-header-cell *matHeaderCellDef>Tuesday</th>
+        <td mat-cell *matCellDef="let element">{{ element.tuesday | number: '1.0-1' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Wednesday">
+        <th mat-header-cell *matHeaderCellDef>Wednesday</th>
+        <td mat-cell *matCellDef="let element">{{ element.wednesday | number: '1.0-1' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Thursday">
+        <th mat-header-cell *matHeaderCellDef>Thursday</th>
+        <td mat-cell *matCellDef="let element">{{ element.thursday | number: '1.0-1' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Friday">
+        <th mat-header-cell *matHeaderCellDef>Friday</th>
+        <td mat-cell *matCellDef="let element">{{ element.friday | number: '1.0-1' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Saturday">
+        <th mat-header-cell *matHeaderCellDef>Saturday</th>
+        <td mat-cell *matCellDef="let element">{{ element.saturday | number: '1.0-1' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Sunday">
+        <th mat-header-cell *matHeaderCellDef>Sunday</th>
+        <td mat-cell *matCellDef="let element">{{ element.sunday | number: '1.0-1' }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="tableDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: tableDisplayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="!isImage && !isTable">
+  No preview available for this file type
+</div>

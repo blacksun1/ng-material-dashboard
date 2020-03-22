@@ -1,0 +1,24 @@
+<h1>Process Hubstaff Time Sheet</h1>
+
+<div
+  *ngIf="localFileReadingSupported else notSupported"
+  class="dropzone"
+  [ngClass]="dropZoneClass"
+  (drop)="dropHandler($event)"
+  (dragover)="dragOver($event)"
+  (dragleave)="dragLeave()"
+  >
+  Drop your time sheet file here
+</div>
+
+<ul *ngIf="files.length > 0">
+  <li *ngFor="let file of files; index as i;">
+    <app-widget-file [file]="file"></app-widget-file>
+  </li>
+</ul>
+
+<ng-template #notSupported>
+  <div>
+    Drag and drop of local files is not supported in your browser.
+  </div>
+</ng-template>
