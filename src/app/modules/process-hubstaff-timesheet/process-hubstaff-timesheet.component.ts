@@ -31,17 +31,30 @@ export class ProcessHubstaffTimesheetComponent implements OnInit {
     }
   }
 
+  private isValidDrop(event: EventWithDataTransfer) {
+    let files;
+    if (event.dataTransfer.items) {
+      files = event.dataTransfer.items;
+    } else {
+      files = event.dataTransfer.files;
+    }
+
+    if (files.length !== 1) {
+      return false;
+    }
+
+    if (files[0].type !== "text/csv") {
+      return false;
+    }
+
+    return true;
+  }
+
   dragOver(event: EventWithDataTransfer) {
     event.preventDefault();
-    if (event.dataTransfer.items) {
-      this.dropZoneClass = event.dataTransfer.items.length === 1 ?
-        'valid' :
-        'invalid';
-    } else {
-      this.dropZoneClass = event.dataTransfer.files.length === 1 ?
-        'valid' :
-        'invalid';
-    }
+    this.dropZoneClass = this.isValidDrop(event) ?
+      'valid' :
+      'invalid';
   }
 
   dragLeave() {
@@ -51,6 +64,10 @@ export class ProcessHubstaffTimesheetComponent implements OnInit {
   dropHandler(event: EventWithDataTransfer) {
     this.dropZoneClass = "";
     event.preventDefault();
+
+    if (!this.isValidDrop(event)) {
+      return false;
+    }
 
     if (event.dataTransfer.items) {
       if (event.dataTransfer.items.length !== 1) {
