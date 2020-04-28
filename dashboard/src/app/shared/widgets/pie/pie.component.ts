@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
-import * as Highcharts from "highcharts";
-import HC_EXPORTING from "highcharts/modules/exporting";
+import { Component, OnInit, Input } from '@angular/core';
+import * as Highcharts from 'highcharts';
+import HC_EXPORTING from 'highcharts/modules/exporting';
 
 @Component({
-  selector: "app-widget-pie",
-  templateUrl: "./pie.component.html",
-  styleUrls: ["./pie.component.scss"]
+  selector: 'app-widget-pie',
+  templateUrl: './pie.component.html',
+  styleUrls: ['./pie.component.scss']
 })
 export class PieComponent implements OnInit {
   Highcharts = Highcharts;
@@ -22,13 +22,13 @@ export class PieComponent implements OnInit {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
-        type: "pie"
+        type: 'pie'
       },
       title: {
-        text: "Browser market shares in January, 2018"
+        text: 'Browser market shares in January, 2018'
       },
       tooltip: {
-        pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
       },
       exporting: {
         enabled: true,
@@ -38,23 +38,23 @@ export class PieComponent implements OnInit {
       },
       accessibility: {
         point: {
-          valueDescriptionFormat: "{point}%"
+          valueDescriptionFormat: '{point}%'
         }
       },
       plotOptions: {
         pie: {
           allowPointSelect: true,
-          cursor: "pointer",
+          cursor: 'pointer',
           dataLabels: {
             enabled: true,
-            format: "<b>{point.name}</b>: {point.percentage:.1f} %"
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
           }
         }
       },
       series: [
         {
-          name: "Brands",
-          type: "pie",
+          name: 'Brands',
+          type: 'pie',
           colorByPoint: true,
           data: this.data,
         }
@@ -64,7 +64,7 @@ export class PieComponent implements OnInit {
     HC_EXPORTING(this.Highcharts);
 
     setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
+      window.dispatchEvent(new Event('resize'));
     }, 300);
   }
 }

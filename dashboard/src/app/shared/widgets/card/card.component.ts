@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as Highcharts from "highcharts";
+import * as Highcharts from 'highcharts';
 import HC_EXPORTING from 'highcharts/modules/exporting';
 
 @Component({
@@ -19,17 +19,17 @@ export class CardComponent implements OnInit {
   total: string;
 
   @Input()
-  percentage: string
+  percentage: string;
 
   @Input()
-  data: number[]
+  data: number[];
 
   constructor() { }
 
   ngOnInit(): void {
     this.chartOptions = {
       chart: {
-        type: "area",
+        type: 'area',
         backgroundColor: null,
         borderWidth: 0,
         margin: [2, 2, 2, 2],
@@ -57,7 +57,7 @@ export class CardComponent implements OnInit {
       series: [
         {
           data: this.data,
-          type: "area",
+          type: 'area',
         }
       ],
       xAxis: {

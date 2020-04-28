@@ -1,22 +1,22 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Subject } from "rxjs";
-import { map, tap, filter } from "rxjs/operators";
-import csvtojson from "csvtojson";
+import { Component, OnInit, Input } from '@angular/core';
+import { Subject } from 'rxjs';
+import { map, tap, filter } from 'rxjs/operators';
+import csvtojson from 'csvtojson';
 
-const ceil10 = (value: number) : number => Math.ceil(value * 10) / 10
+const ceil10 = (value: number): number => Math.ceil(value * 10) / 10;
 
-const toDecimalTime = (hours: number, minutes : number, seconds: number) : number => hours + (ceil10(((minutes + seconds / 60) / 60)))
+const toDecimalTime = (hours: number, minutes: number, seconds: number): number => hours + (ceil10(((minutes + seconds / 60) / 60)));
 
 function stringTimeToDecimalTime(value: string) {
-  const [hours, minutes, seconds] = value.split(":");
+  const [hours, minutes, seconds] = value.split(':');
 
   return toDecimalTime(+hours, +minutes, +seconds);
 }
 
 @Component({
-  selector: "app-widget-file",
-  templateUrl: "./file.component.html",
-  styleUrls: ["./file.component.scss"]
+  selector: 'app-widget-file',
+  templateUrl: './file.component.html',
+  styleUrls: ['./file.component.scss']
 })
 export class FileComponent implements OnInit {
   @Input()
@@ -27,7 +27,7 @@ export class FileComponent implements OnInit {
   src$ = new Subject();
   formattedSrc$ = this.src$.pipe(
     tap(src => {
-      console.log("src", src);
+      console.log('src', src);
     }),
     map((results: any[]) => {
       let mondayTotal = 0;
@@ -41,8 +41,8 @@ export class FileComponent implements OnInit {
       const newResults = results
         .filter((v, i) => i > 0)
         .map(row => {
-          const projectCode = row.field4.substr(row.field4.indexOf("(") + 1).replace(")", "");
-          const projectName = row.field4.substr(0, row.field4.indexOf("(")).trim();
+          const projectCode = row.field4.substr(row.field4.indexOf('(') + 1).replace(')', '');
+          const projectName = row.field4.substr(0, row.field4.indexOf('(')).trim();
           const monday = stringTimeToDecimalTime(row.field6);
           mondayTotal += monday;
           const tuesday = stringTimeToDecimalTime(row.field7);
@@ -70,9 +70,9 @@ export class FileComponent implements OnInit {
             sunday,
           });
         });
-        newResults.push({
-          projectName: "Total",
-          projectCode: "",
+      newResults.push({
+          projectName: 'Total',
+          projectCode: '',
           monday: mondayTotal,
           tuesday: tuesdayTotal,
           wednesday: wednesdayTotal,
@@ -82,25 +82,25 @@ export class FileComponent implements OnInit {
           sunday: sundayTotal,
         });
 
-        return {
+      return {
           total: mondayTotal + tuesdayTotal + wednesdayTotal + thursdayTotal + fridayTotal + saturdayTotal + sundayTotal,
           tableData: newResults,
         };
     })
   );
 
-  tableDisplayedColumns: string[] = ["ProjectName", "ProjectCode", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  tableDisplayedColumns: string[] = ['ProjectName', 'ProjectCode', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor() {}
 
   ngOnInit(): void {
     switch (this.file.type) {
-      case "image/jpeg":
-      case "image/png":
-      case "image/gif":
+      case 'image/jpeg':
+      case 'image/png':
+      case 'image/gif':
         this.handleImage();
         break;
-      case "text/csv":
+      case 'text/csv':
         this.handleCSV();
         break;
     }
@@ -121,7 +121,7 @@ export class FileComponent implements OnInit {
 
     const reader = new FileReader();
     reader.onload = async e => {
-      if (typeof e.target.result === "string") {
+      if (typeof e.target.result === 'string') {
         const result = await this.parseCSV(e.target.result);
         this.src$.next(result);
       }
@@ -130,7 +130,7 @@ export class FileComponent implements OnInit {
   }
 
   private async parseCSV(csv: string) {
-    const result = csvtojson({ noheader:true }).fromString(csv);
+    const result = csvtojson({ noheader: true }).fromString(csv);
 
     return await result;
   }

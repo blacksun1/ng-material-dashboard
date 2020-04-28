@@ -9,23 +9,23 @@ export class DashboardService {
   bigChart(): any[] {
     return [
       {
-        name: "Asia",
+        name: 'Asia',
         data: [ 502, 635, 809, 947, 1402, 3634, 5268 ],
       },
       {
-        name: "Africa",
+        name: 'Africa',
         data: [ 500, 302, 576, 260, 702, 555, 905 ],
       },
       {
-        name: "Europe",
+        name: 'Europe',
         data: [ 512, 423, 501, 122, 407, 769, 487 ],
       },
       {
-        name: "America",
+        name: 'America',
         data: [ 420, 494, 308, 904, 922, 736, 891 ],
       },
       {
-        name: "Oceania",
+        name: 'Oceania',
         data: [ 675, 409, 955, 836, 518, 408, 751 ],
       },
     ];
@@ -38,41 +38,41 @@ export class DashboardService {
   pieChart(): any[] {
     return [
       {
-        name: "Chrome",
+        name: 'Chrome',
         y: 61.41,
         sliced: true,
         selected: true,
       },
       {
-        name: "Internet Explorer",
+        name: 'Internet Explorer',
         y: 11.84
       },
       {
-        name: "Firefox",
+        name: 'Firefox',
         y: 10.85
       },
       {
-        name: "Edge",
+        name: 'Edge',
         y: 4.67
       },
       {
-        name: "Safari",
+        name: 'Safari',
         y: 4.18
       },
       {
-        name: "Sogou Explorer",
+        name: 'Sogou Explorer',
         y: 1.64
       },
       {
-        name: "Opera",
+        name: 'Opera',
         y: 1.6
       },
       {
-        name: "QQ",
+        name: 'QQ',
         y: 1.2
       },
       {
-        name: "Other",
+        name: 'Other',
         y: 2.61
       }
     ];

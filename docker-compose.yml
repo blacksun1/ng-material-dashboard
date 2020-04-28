@@ -1,0 +1,8 @@
+version: "3.4"
+services:
+    dashboard:
+        container_name: ng-material-dashboard
+        build: ./dashboard/
+        restart: always
+        ports:
+            - "4400:80"

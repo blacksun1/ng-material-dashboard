@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 interface EventWithDataTransfer extends Event {
   dataTransfer: any;
@@ -10,9 +10,9 @@ interface File {
 }
 
 @Component({
-  selector: "app-process-hubstaff-timesheet",
-  templateUrl: "./process-hubstaff-timesheet.component.html",
-  styleUrls: ["./process-hubstaff-timesheet.component.scss"],
+  selector: 'app-process-hubstaff-timesheet',
+  templateUrl: './process-hubstaff-timesheet.component.html',
+  styleUrls: ['./process-hubstaff-timesheet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
@@ -43,7 +43,7 @@ export class ProcessHubstaffTimesheetComponent implements OnInit {
       return false;
     }
 
-    if (files[0].type !== "text/csv") {
+    if (files[0].type !== 'text/csv') {
       return false;
     }
 
@@ -58,11 +58,11 @@ export class ProcessHubstaffTimesheetComponent implements OnInit {
   }
 
   dragLeave() {
-    this.dropZoneClass = "";
+    this.dropZoneClass = '';
   }
 
   dropHandler(event: EventWithDataTransfer) {
-    this.dropZoneClass = "";
+    this.dropZoneClass = '';
     event.preventDefault();
 
     if (!this.isValidDrop(event)) {
@@ -75,10 +75,10 @@ export class ProcessHubstaffTimesheetComponent implements OnInit {
       }
 
       // Use DataTransferItemList interface to access the file(s)
-      const newFiles = []
+      const newFiles = [];
       for (let i = 0; i < event.dataTransfer.items.length; i++) {
         // If dropped items aren't files, reject them
-        if (event.dataTransfer.items[i].kind === "file") {
+        if (event.dataTransfer.items[i].kind === 'file') {
           const file = event.dataTransfer.items[i].getAsFile();
           newFiles.push(file);
         }
@@ -90,9 +90,9 @@ export class ProcessHubstaffTimesheetComponent implements OnInit {
       }
 
       // Use DataTransfer interface to access the file(s)
-      for (var i = 0; i < event.dataTransfer.files.length; i++) {
+      for (let i = 0; i < event.dataTransfer.files.length; i++) {
         console.log(
-          "... file[" + i + "].name = " + event.dataTransfer.files[i].name
+          '... file[' + i + '].name = ' + event.dataTransfer.files[i].name
         );
       }
     }

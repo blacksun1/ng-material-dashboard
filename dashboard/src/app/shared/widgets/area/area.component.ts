@@ -1,11 +1,11 @@
-import { Component, OnInit, Input} from "@angular/core";
-import * as Highcharts from "highcharts";
+import { Component, OnInit, Input} from '@angular/core';
+import * as Highcharts from 'highcharts';
 import HC_EXPORTING from 'highcharts/modules/exporting';
 
 @Component({
-  selector: "app-widget-area",
-  templateUrl: "./area.component.html",
-  styleUrls: ["./area.component.scss"]
+  selector: 'app-widget-area',
+  templateUrl: './area.component.html',
+  styleUrls: ['./area.component.scss']
 })
 export class AreaComponent implements OnInit {
   @Input()
@@ -17,17 +17,17 @@ export class AreaComponent implements OnInit {
   ngOnInit(): void {
     this.chartOptions = {
       chart: {
-        type: "area"
+        type: 'area'
       },
       title: {
-        text: "Random Data"
+        text: 'Random Data'
       },
       subtitle: {
-        text: "Demo"
+        text: 'Demo'
       },
       tooltip: {
         split: true,
-        valueSuffix: " millions"
+        valueSuffix: ' millions'
       },
       exporting: {
         enabled: true,
