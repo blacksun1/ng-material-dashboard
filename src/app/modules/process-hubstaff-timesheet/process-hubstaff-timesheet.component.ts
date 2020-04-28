@@ -32,7 +32,7 @@ export class ProcessHubstaffTimesheetComponent implements OnInit {
   }
 
   private isValidDrop(event: EventWithDataTransfer) {
-    let files;
+    let files: File[];
     if (event.dataTransfer.items) {
       files = event.dataTransfer.items;
     } else {

@@ -82,7 +82,10 @@ export class FileComponent implements OnInit {
           sunday: sundayTotal,
         });
 
-        return newResults;
+        return {
+          total: mondayTotal + tuesdayTotal + wednesdayTotal + thursdayTotal + fridayTotal + saturdayTotal + sundayTotal,
+          tableData: newResults,
+        };
     })
   );
 
