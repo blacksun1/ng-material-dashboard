@@ -2,6 +2,7 @@ version: "3.4"
 services:
     dashboard:
         container_name: ng-material-dashboard
+        image: blacksun1/ng-material-dashboard
         build: ./dashboard/
         restart: always
         ports:
