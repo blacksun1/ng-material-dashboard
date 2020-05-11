@@ -19,17 +19,21 @@ import { CardComponent } from './widgets/card/card.component';
 import { FileComponent } from './widgets/file/file.component';
 import { PieComponent } from './widgets/pie/pie.component';
 import { TableComponent } from './widgets/table/table.component';
+import { UserComponent } from './widgets/user/user.component';
+import { GeoPatternImgComponent } from './widgets/geo-pattern-img/geo-pattern-img.component';
 
 @NgModule({
   declarations: [
     AreaComponent,
     CardComponent,
+    FileComponent,
     FooterComponent,
+    GeoPatternImgComponent,
     HeaderComponent,
     PieComponent,
     SidebarComponent,
     TableComponent,
-    FileComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,
@@ -48,12 +52,14 @@ import { TableComponent } from './widgets/table/table.component';
   exports: [
     AreaComponent,
     CardComponent,
+    FileComponent,
     FooterComponent,
+    GeoPatternImgComponent,
     HeaderComponent,
     PieComponent,
     SidebarComponent,
     TableComponent,
-    FileComponent,
+    UserComponent,
   ]
 })
 export class SharedModule { }
