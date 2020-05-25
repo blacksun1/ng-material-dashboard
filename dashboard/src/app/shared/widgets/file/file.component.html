@@ -6,7 +6,7 @@ File name: "{{ file.name }}", File type: "{{ file.type }}"
 
 <div *ngIf="isTable;">
   <div *ngIf="formattedSrc$ | async as src">
-    <h3>Total: {{src.total}} hours</h3>
+    <h3>Total: {{ src.total | number: '1.0-1' }} hours</h3>
 
     <table mat-table [dataSource]="src.tableData">
       <ng-container matColumnDef="ProjectName">
